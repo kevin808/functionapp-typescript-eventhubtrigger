@@ -1,0 +1,24 @@
+{
+  "bindings": [
+    {
+      "type": "eventHubTrigger",
+      "name": "ingressEventHubMessagesConsumer",
+      "direction": "in",
+      "connection": "EventHubConnection",
+      "cardinality": "many",
+      "consumerGroup": "%Consumergroup%",
+      "dataType": "string",
+      "eventHubName":"%EventHubName%",
+      "storageConnection": "%AzureWebJobsStorage%"
+    },
+    {
+      "type": "eventHub",
+      "direction": "out",
+      "name": "egressEventHubMessageProducer",
+      "eventHubName":"%egressEventHubName%",
+      "connection": "egressEventHubConnectionString",
+      "storageConnection": "AzureWebJobsStorage"
+    }
+  ],
+  "scriptFile": "../dist/EventHubTrigger/index.js"
+}
